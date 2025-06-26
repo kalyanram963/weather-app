@@ -1,0 +1,23 @@
+{
+  "app_title": "Aplicación del Tiempo",
+  "search": "Buscar",
+  "speak": "Hablar",
+  "my_location": "Mi ubicación",
+  "light_mode": "Modo claro",
+  "dark_mode": "Modo oscuro",
+  "sunrise": "Amanecer",
+  "sunset": "Atardecer",
+  "temperature": "Temperatura",
+  "date": "Fecha",
+  "condition": "Condición",
+  "switch_temp": "Cambiar temperatura",
+  "speak_result": "Hablar resultado",
+  "get_tip": "Obtener consejo IA",
+  "weather_tip": "Consejo del tiempo IA",
+  "speak_tip": "Hablar consejo",
+  "weather_alert": "Alerta del Tiempo",
+  "download_pdf": "Descargar PDF",
+  "speech_error": "El reconocimiento de voz falló. Inténtalo de nuevo.",
+  "severe_weather_alerts": "Alertas Meteorológicas Graves",
+  "alert_intro": "Hay alertas meteorológicas graves para esta zona"
+}

@@ -1,0 +1,23 @@
+{
+  "app_title": "ಹವಾಮಾನ ಅಪ್ಲಿಕೇಶನ್",
+  "search": "ಹುಡುಕಿ",
+  "speak": "ಮಾತನಾಡಿ",
+  "my_location": "ನನ್ನ ಸ್ಥಳ",
+  "light_mode": "ಲೈಟ್ ಮೋಡ್",
+  "dark_mode": "ಡಾರ್ಕ್ ಮೋಡ್",
+  "sunrise": "ಸೂರ್ಯೋದಯ",
+  "sunset": "ಸೂರ್ಯಾಸ್ತ",
+  "temperature": "ತಾಪಮಾನ",
+  "date": "ದಿನಾಂಕ",
+  "condition": "ಸ್ಥಿತಿ",
+  "switch_temp": "ತಾಪಮಾನ ಬದಲಿಸಿ",
+  "speak_result": "ಫಲಿತಾಂಶ ಹೇಳಿ",
+  "get_tip": "AI ಸಲಹೆ ಪಡೆಯಿರಿ",
+  "weather_tip": "AI ಹವಾಮಾನ ಸಲಹೆ",
+  "speak_tip": "ಸಲಹೆ ಹೇಳಿ",
+  "weather_alert": "ಹವಾಮಾನ ಎಚ್ಚರಿಕೆ",
+  "download_pdf": "PDF ಡೌನ್‌ಲೋಡ್ ಮಾಡಿ",
+  "speech_error": "ಧ್ವನಿ ಗುರುತಿಸುವಿಕೆ ವಿಫಲವಾಗಿದೆ. ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+  "severe_weather_alerts": "ತೀವ್ರ ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳು",
+  "alert_intro": "ಈ ಪ್ರದೇಶಕ್ಕೆ ತೀವ್ರ ಹವಾಮಾನ ಎಚ್ಚರಿಕೆಗಳಿವೆ"
+}

@@ -1,0 +1,23 @@
+{
+  "app_title": "Weather App",
+  "search": "Search",
+  "speak": "Speak",
+  "my_location": "My Location",
+  "light_mode": "Light Mode",
+  "dark_mode": "Dark Mode",
+  "sunrise": "Sunrise",
+  "sunset": "Sunset",
+  "temperature": "Temperature",
+  "date": "Date",
+  "condition": "Condition",
+  "switch_temp": "Switch Temperature",
+  "speak_result": "Speak Result",
+  "get_tip": "Get AI Tip",
+  "weather_tip": "AI Weather Tip",
+  "speak_tip": "Speak Tip",
+  "weather_alert": "Weather Alert",
+  "download_pdf": "Download PDF",
+  "speech_error": "Speech recognition failed. Try again.",
+  "severe_weather_alerts": "Severe Weather Alerts",
+  "alert_intro": "There are severe weather alerts for this area"
+}
