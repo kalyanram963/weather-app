@@ -26,10 +26,9 @@ const App = () => {
   const [showHistory, setShowHistory] = useState(false);
   const [isExporting, setIsExporting] = useState(false);
 
-
   const weatherApiKey = "93ca131f7d3e4974813153729252106";
   const geoApiKey = "a357b57b6ff24dd1a4583de681a66a74";
-  const openRouterKey = "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";
+  const openRouterKey = "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";
   const geoDbKey = "5ef9d22ed9msh78774102cf1d2fep10dfdajsn3433516c332a";
 
   useEffect(() => {
@@ -375,7 +374,7 @@ Give only 1 suggestion in 1–2 lines.
             backdropFilter: "blur(4px)",
           }}
         >
-          🌎
+          🌐
         </button>
         <div
           id="lang-options"
@@ -396,7 +395,7 @@ Give only 1 suggestion in 1–2 lines.
         >
           {[
             { code: "en", label: "English" },
-            { code: "hi", label: "हिंदी" },
+            { code: "hi", label: "हिन्दी" },
             { code: "te", label: "తెలుగు" },
             { code: "ta", label: "தமிழ்" },
             { code: "kn", label: "ಕನ್ನಡ" },
@@ -450,7 +449,7 @@ Give only 1 suggestion in 1–2 lines.
             backdropFilter: "blur(4px)",
           }}
         >
-          📖
+          📚
         </button>
         {showHistory && (
           <div
@@ -475,7 +474,7 @@ Give only 1 suggestion in 1–2 lines.
             }}
           >
             <h2 style={{ color: '#00e5ff', fontSize: '1.2em', margin: '15px 0 10px', padding: '0 10px', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px' }}>
-              📖 {t("weather_history")}
+              📚 {t("weather_history")}
             </h2>
             {weatherHistory.length > 0 ? (
               <>
@@ -517,7 +516,7 @@ Give only 1 suggestion in 1–2 lines.
         )}
       </div>
 
-
+      {/* This is the updated title tag you requested */}
       <h1>⛅ {t("app_title")}</h1>
 
       <div className="controls">
@@ -556,10 +555,10 @@ Give only 1 suggestion in 1–2 lines.
               borderRadius: "8px",
               boxShadow: "0 2px 10px rgba(0, 255, 255, 0.5)",
               color: "#e0f7fa",
-              position: "absolute", // Position it relative to its parent
-              width: "calc(100% - 40px)", // Match input width approximately
-              maxWidth: "600px", // Match max-width of controls or input
-              zIndex: 500, // Ensure it's above other elements
+              position: "absolute",
+              width: "calc(100% - 40px)",
+              maxWidth: "600px",
+              zIndex: 500,
               backdropFilter: "blur(5px)"
           }}>
             {suggestions.map((s, i) => (
@@ -587,15 +586,15 @@ Give only 1 suggestion in 1–2 lines.
       </div>
 
       <p className="date-time">
-        <span className="icon-date">🗓️</span> {dateTime.split(",")[0]} &nbsp;&nbsp;
-        <span className="icon-time">🕒</span> {dateTime.split(",")[1]}
+        <span className="icon-date">📅</span> {dateTime.split(",")[0]} &nbsp;&nbsp;
+        <span className="icon-time">⏰</span> {dateTime.split(",")[1]}
       </p>
 
 
       {weather && (
         <div id="pdf-content">
           <div className="sun-times">
-            ☀️ {t("sunrise")}: {weather.sunrise} &nbsp;&nbsp; 🌇 {t("sunset")}: {weather.sunset}
+            ☀️ {t("sunrise")}: {weather.sunrise} &nbsp;&nbsp; 🌅 {t("sunset")}: {weather.sunset}
           </div>
 
           {alerts.length > 0 && (
@@ -650,15 +649,14 @@ Give only 1 suggestion in 1–2 lines.
 
           <ForecastGraph forecast={forecast} isCelsius={isCelsius} />
 
-          {/* New container with inline styles for button alignment and spacing */}
           <div style={{
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'center',
-            gap: '15px', // Space between buttons
-            marginTop: '25px', // Space above the button group
-            marginBottom: '25px', // Space below the button group
-            padding: '10px' // Internal padding for the container
+            gap: '15px',
+            marginTop: '25px',
+            marginBottom: '25px',
+            padding: '10px'
           }}>
             <button onClick={() => setIsCelsius(!isCelsius)} style={{
                 padding: "12px 20px",
@@ -671,7 +669,7 @@ Give only 1 suggestion in 1–2 lines.
                 cursor: "pointer",
                 boxShadow: "0 4px 15px rgba(0, 229, 255, 0.4)",
                 transition: "all 0.3s ease",
-                flexShrink: 0 // Prevent shrinking
+                flexShrink: 0
             }}>🌡️ {t("switch_temp")}</button>
             <button onClick={speakResult} disabled={speaking} style={{
                 padding: "12px 20px",
@@ -761,7 +759,6 @@ Give only 1 suggestion in 1–2 lines.
               <div className="tip-content">{aiTravel}</div>
             </div>
           )}
-
         </div>
       )}
     </div>
