@@ -28,7 +28,7 @@ const App = () => {
 
   const weatherApiKey = "93ca131f7d3e4974813153729252106";
   const geoApiKey = "a357b57b6ff24dd1a4583de681a66a74";
-  const openRouterKey = "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";
+  const openRouterKey = "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";
   const geoDbKey = "5ef9d22ed9msh78774102cf1d2fep10dfdajsn3433516c332a";
 
   useEffect(() => {
