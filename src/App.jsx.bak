@@ -6,7 +6,7 @@ import MapView from "./MapView";
 import { useTranslation } from "react-i18next";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas";
-// Removed: import { GoogleGenerativeAI } from "@google/generative-ai"; // No longer needed for direct fetch
+import { GoogleGenerativeAI } from "@google/generative-ai"; // Import Gemini SDK
 
 const App = () => {
   const { t, i18n } = useTranslation();
@@ -29,13 +29,16 @@ const App = () => {
 
   const weatherApiKey = "93ca131f7d3e4974813153729252106";
   const geoApiKey = "a357b57b6ff24dd1a4583de681a66a74";
-  // IMPORTANT: Replace with your actual Gemini API Key
-  // For a production app, use environment variables (e.g., process.env.REACT_APP_GEMINI_API_KEY)
-  // and consider a backend proxy to protect your API key.
-  const geminiApiKey = "AIzaSyBUJ8utUD0DROMULBWSnUreZ6XJXv-OX0U"; // <--- CHANGE THIS TO YOUR ACTUAL KEY
+  // Replace with your actual Gemini API Key
+  // IMPORTANT: In a real application, never hardcode API keys directly in client-side code.
+  // Use environment variables (e.g., process.env.REACT_APP_GEMINI_API_KEY)
+  // and a backend proxy for production to keep your API key secure.
+  const geminiApiKey = "AIzaSyBUJ8utUD0DROMULBWSnUreZ6XJXv-OX0U"; // <--- CHANGE THIS
   const geoDbKey = "5ef9d22ed9msh78774102cf1d2fep10dfdajsn3433516c332a";
 
-  // Removed: Gemini SDK initialization (genAI, model)
+  // Initialize Gemini AI
+  const genAI = new GoogleGenerativeAI(geminiApiKey);
+  const model = genAI.getGenerativeModel({ model: "gemini-pro" }); // You can use "gemini-pro" for text generation
 
   useEffect(() => {
     const tick = () => setDateTime(new Date().toLocaleString());
@@ -82,9 +85,6 @@ const App = () => {
       setAlerts(res.data.alerts && res.data.alerts.alert ? res.data.alerts.alert : []);
       setIsCelsius(true);
       setAiTip(""); // Clear previous AI tips when new weather is fetched
-      setAiClothing(""); // Clear previous clothing suggestion
-      setAiTravel(""); // Clear previous travel suggestion
-
 
       const newHistoryItem = {
         city: res.data.location.name,
@@ -156,7 +156,7 @@ const App = () => {
     u.onend = () => setSpeaking(false);
   };
 
-  // --- Gemini API Integration for AI Tip (Direct Fetch) ---
+  // --- Gemini API Integration for AI Tip ---
   const getAiTip = async () => {
     if (!weather) return;
     const prompt = `
@@ -170,36 +170,17 @@ const App = () => {
     `.trim();
 
     try {
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-          }),
-        }
-      );
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        console.error("Gemini API Error (AI Tip):", errorData);
-        throw new Error(`Gemini API error: ${errorData.error.message || res.statusText}`);
-      }
-
-      const data = await res.json();
-      // Gemini API response structure for generateContent
-      const message = data.candidates?.[0]?.content?.parts?.[0]?.text || "No tip available.";
-      setAiTip(message);
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+      setAiTip(text);
     } catch (error) {
       console.error("AI tip error:", error);
-      setAiTip("Failed to load tip. " + error.message);
+      setAiTip("Failed to load tip.");
     }
   };
 
-  // --- Gemini API Integration for Clothing Suggestion (Direct Fetch) ---
+  // --- Gemini API Integration for Clothing Suggestion ---
   const getClothingSuggestion = async () => {
     if (!weather) return;
     const prompt = `
@@ -213,35 +194,17 @@ const App = () => {
     `.trim();
 
     try {
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-          }),
-        }
-      );
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        console.error("Gemini API Error (Clothing Suggestion):", errorData);
-        throw new Error(`Gemini API error: ${errorData.error.message || res.statusText}`);
-      }
-
-      const data = await res.json();
-      const suggestion = data.candidates?.[0]?.content?.parts?.[0]?.text || "No clothing suggestion available.";
-      setAiClothing(suggestion);
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+      setAiClothing(text);
     } catch (error) {
       console.error("AI clothing suggestion error:", error);
-      setAiClothing("Failed to get suggestion. " + error.message);
+      setAiClothing("Failed to get suggestion.");
     }
   };
 
-  // --- Gemini API Integration for Travel Suggestion (Direct Fetch) ---
+  // --- Gemini API Integration for Travel Suggestion ---
   const getAiTravelSuggestion = async () => {
     if (!weather) return;
 
@@ -255,31 +218,13 @@ const App = () => {
     `.trim();
 
     try {
-      const res = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiApiKey}`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            contents: [{ parts: [{ text: prompt }] }],
-          }),
-        }
-      );
-
-      if (!res.ok) {
-        const errorData = await res.json();
-        console.error("Gemini API Error (Travel Suggestion):", errorData);
-        throw new Error(`Gemini API error: ${errorData.error.message || res.statusText}`);
-      }
-
-      const data = await res.json();
-      const suggestion = data.candidates?.[0]?.content?.parts?.[0]?.text || "No travel suggestion available.";
-      setAiTravel(suggestion);
+      const result = await model.generateContent(prompt);
+      const response = await result.response;
+      const text = response.text();
+      setAiTravel(text);
     } catch (error) {
       console.error("Travel Suggestion Error:", error);
-      setAiTravel("Failed to get travel suggestion. " + error.message);
+      setAiTravel("Failed to get travel suggestion.");
     }
   };
 
