@@ -32,7 +32,7 @@ const App = () => {
   // IMPORTANT: Replace with your actual Gemini API Key
   // For a production app, use environment variables (e.g., process.env.REACT_APP_GEMINI_API_KEY)
   // and consider a backend proxy to protect your API key.
-  const geminiApiKey = "AIzaSyBUJ8utUD0DROMULBWSnUreZ6XJXv-OX0U"; // <--- CHANGE THIS TO YOUR ACTUAL KEY
+  const geminiApiKey = "AIzaSyAJU8gPvh7bmNEw8CBJNUp6lIAMe4AC2Sg"; // <--- CHANGE THIS TO YOUR ACTUAL KEY
   const geoDbKey = "5ef9d22ed9msh78774102cf1d2fep10dfdajsn3433516c332a";
 
   // Removed: Gemini SDK initialization (genAI, model)
