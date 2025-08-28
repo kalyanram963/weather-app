@@ -1,0 +1,23 @@
+{
+  "app_title": "मौसम ऐप",
+  "search": "खोजें",
+  "speak": "बोलें",
+  "my_location": "मेरा स्थान",
+  "light_mode": "लाइट मोड",
+  "dark_mode": "डार्क मोड",
+  "sunrise": "सूर्योदय",
+  "sunset": "सूर्यास्त",
+  "temperature": "तापमान",
+  "date": "दिनांक",
+  "condition": "स्थिति",
+  "switch_temp": "तापमान बदलें",
+  "speak_result": "परिणाम बोलें",
+  "get_tip": "AI टिप प्राप्त करें",
+  "weather_tip": "AI मौसम टिप",
+  "speak_tip": "टिप बोलें",
+  "weather_alert": "मौसम अलर्ट",
+  "download_pdf": "पीडीएफ डाउनलोड करें",
+  "speech_error": "वाक् पहचान विफल रही। पुनः प्रयास करें।",
+  "severe_weather_alerts": "गंभीर मौसम अलर्ट",
+  "alert_intro": "इस क्षेत्र के लिए गंभीर मौसम अलर्ट हैं"
+}

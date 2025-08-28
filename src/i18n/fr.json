@@ -1,0 +1,23 @@
+{
+  "app_title": "Application Météo",
+  "search": "Rechercher",
+  "speak": "Parler",
+  "my_location": "Ma position",
+  "light_mode": "Mode clair",
+  "dark_mode": "Mode sombre",
+  "sunrise": "Lever du soleil",
+  "sunset": "Coucher du soleil",
+  "temperature": "Température",
+  "date": "Date",
+  "condition": "Condition",
+  "switch_temp": "Changer de température",
+  "speak_result": "Parler le résultat",
+  "get_tip": "Obtenir un conseil IA",
+  "weather_tip": "Conseil Météo IA",
+  "speak_tip": "Parler le conseil",
+  "weather_alert": "Alerte Météo",
+  "download_pdf": "Télécharger le PDF",
+  "speech_error": "La reconnaissance vocale a échoué. Réessayez.",
+  "severe_weather_alerts": "Alertes Météo Sévères",
+  "alert_intro": "Il y a des alertes météo sévères pour cette zone"
+}
